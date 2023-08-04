@@ -1,4 +1,5 @@
 import React from 'react'
+import Nav from './Nav'
 
 const links = [
     { value: '#', content: 'Link 1', id: '1' },
@@ -9,8 +10,7 @@ const links = [
 
 const Header = () => {
     return (
-        <header className='flex h-[15vh] items-center px-4 justify-between bg-blue-900'>
-            <Logo />
+        <header className='flex flex-col items-center justify-between md:flex-row flex-grow'>
             <Nav links={links} />
         </header>
     )
