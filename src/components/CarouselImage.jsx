@@ -3,7 +3,7 @@ import React from 'react'
 const CarouselImage = ({ ima }) => {
     return (
         <div className='w-1/2' style={{ position: 'relative', padding: '0.4rem' }}>
-            <img src={ima.src} alt={`${ima.city}, ${ima.country}`} style={{ width: '100%', height: 'auto' }} />
+            <img src={ima.src} alt={`${ima.city}, ${ima.country}`} style={{ objectFit: 'cover', width: '100%', height: '200px' }} />
             <div
                 style={{
                     position: 'absolute',
@@ -20,9 +20,6 @@ const CarouselImage = ({ ima }) => {
                 <p style={{ margin: '0' }}>{ima.country}</p>
             </div>
         </div>
-    );
-    return (
-        <img className='w-3/4' src={ima.src} alt={ima.city} />
     )
 }
 

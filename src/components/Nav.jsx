@@ -5,14 +5,14 @@ import { GlobeAmericasIcon, Bars3BottomRightIcon, XMarkIcon, UserCircleIcon } fr
 const Nav = () => {
     let Links = [
         { name: "HOME", link: "/" },
-        { name: "SERVICE", link: "/" },
-        { name: "ABOUT", link: "/" },
-        { name: "CONTACT", link: "/" },
+        { name: "CITIES", link: "/cities" },
+        { name: "ABOUT", link: "/about/asd" },
+        { name: "CONTACT", link: "/contact" },
     ];
     let [open, setOpen] = useState(false);
 
     return (
-        <div className='shadow-md w-full fixed top-0 left-0'>
+        <div className='shadow-md w-full sticky top-0 left-0 z-50'>
             <div className='md:flex items-center justify-between bg-white py-4 px-7'>
                 {/* logo */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
@@ -26,7 +26,7 @@ const Nav = () => {
                     }
                 </div>
                 {/* link items */}
-                <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-100 ease-in-out ${open ? 'top-12' : 'top-[-490px]'}`}>
+                <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-100 ease-in-out ${open ? 'top-12 h-[100vh] md:h-auto' : 'top-[-490px] h-auto'}`}>
                     {
                         Links.map((link, index) => {
                             return (

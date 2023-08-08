@@ -6,7 +6,6 @@ import Carousel from '../components/Carousel'
 const Home = () => {
     return (
         <>
-            <Header />
             <Hero />
             <Carousel />
         </>

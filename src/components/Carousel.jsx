@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Arrow from './Arrow'
 import CarouselSlide from './CarouselSlide';
 import images from '../data/images.json'
@@ -28,6 +28,14 @@ const Carousel = () => {
     const setBullet = (indice) => {
         setIndex(indice)
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            next()
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [index]);
+
     return (
         <div className='w-full flex justify-center items-center'>
             <Arrow direction='left' alt='flecha-i' fn={prev} />
