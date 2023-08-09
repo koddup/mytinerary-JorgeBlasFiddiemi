@@ -1,0 +1,10 @@
+#slideshow {
+    mask-image: linear-gradient(transparent,
+            black 5%,
+            black 95%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent,
+            black 5%,
+            black 95%,
+            transparent 100%);
+}

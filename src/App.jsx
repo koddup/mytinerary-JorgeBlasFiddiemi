@@ -35,7 +35,9 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <RouterProvider router={router} />
+    <div id='mainApp'>
+      <RouterProvider router={router} />
+    </div>
   )
 }
 

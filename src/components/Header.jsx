@@ -10,7 +10,7 @@ const links = [
 
 const Header = () => {
     return (
-        <header className='flex flex-col items-center justify-between md:flex-row flex-grow'>
+        <header className='flex flex-col items-center justify-between md:flex-row'>
             <Nav links={links} />
         </header>
     )

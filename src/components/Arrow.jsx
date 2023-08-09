@@ -10,7 +10,7 @@ const Arrow = ({ direction, alt, fn }) => {
         icon = <ChevronRightIcon className='w-7 h-7 text-blue-600' />;
     }
     return (
-        <div className='p-4 rounded-full bg-white cursor-pointer' onClick={fn}>
+        <div className='p-0 rounded-full bg-white cursor-pointer' onClick={fn}>
             {icon}
         </div>
     )

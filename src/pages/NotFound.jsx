@@ -2,7 +2,7 @@ import React from 'react'
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className='w-full flex justify-center items-center'><img src="src/assets/notfound.jpg" alt="" srcset="" /></div>
   )
 }
 

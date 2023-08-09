@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Arrow from './Arrow'
 import CarouselSlide from './CarouselSlide';
-import images from '../data/images.json'
+import images from '../data/cities.js'
+import './Carousel.css'
+//import images from '../data/images.js'
 
 const Carousel = () => {
     const chunkSize = 4;
@@ -39,7 +41,7 @@ const Carousel = () => {
     return (
         <div className='w-full flex justify-center items-center'>
             <Arrow direction='left' alt='flecha-i' fn={prev} />
-            <div className='bg-slate-500 w-[50vw] p-2 rounded-md m-4'>
+            <div id='slideshow' className='w-full md:w-[60vw] p-0 rounded-md mx-0 my-4'>
                 <CarouselSlide images={imagesPacks[index]} />
                 <div className='flex w-full justify-center mt-4'>
                     {
