@@ -1,23 +1,19 @@
 import React from 'react'
+import './CarouselImage.css'
 
 const CarouselImage = ({ ima }) => {
     return (
-        <div className='w-1/2' style={{ position: 'relative', padding: '0.4rem' }}>
-            <img src={ima.photo} title={ima.smalldescription} alt={`${ima.city}, ${ima.country}`} style={{ objectFit: 'cover', width: '100%', height: '300px' }} />
-            <div
-                style={{
-                    position: 'absolute',
-                    bottom: '0',
-                    left: '0',
-                    right: '0',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    color: 'white',
-                    margin: '0.4rem',
-                    textAlign: 'center',
-                }}
-            >
+        <div className='w-1/2' style={{
+            position: 'relative', padding: '0.4rem',
+        }}>
+            <div className='imageContainer'style={{
+            overflow: 'hidden'
+        }}>
+            <img src={ima.photo} title={ima.smalldescription} alt={`${ima.city}, ${ima.country}`} className='eachCarouselImage' />
+            <div className='imageLabel'>
                 <p style={{ margin: '0' }}>{ima.city}</p>
                 <p style={{ margin: '0' }}>{ima.country}</p>
+            </div>
             </div>
         </div>
     )

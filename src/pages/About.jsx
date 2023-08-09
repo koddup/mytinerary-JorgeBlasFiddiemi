@@ -5,8 +5,10 @@ const About = () => {
   let params = useParams()
   return (
     <>
-    {console.log(params)}
-    <div>About</div>
+      {console.log(params)}
+      <div className='flex-grow'>
+        Params example: {params.miVariable} 
+      </div>
     </>
   )
 }

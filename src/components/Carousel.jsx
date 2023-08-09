@@ -34,7 +34,7 @@ const Carousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             next()
-        }, 3000);
+        }, 4000);
         return () => clearInterval(interval);
     }, [index]);
 
