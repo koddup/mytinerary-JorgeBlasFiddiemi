@@ -1,0 +1,22 @@
+.eachCityImage {
+    object-Fit: cover;
+    width: 25vw;
+    height: 300px;
+    transition: all 200ms;
+}
+.eachCityImage:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 200ms;
+    }
+
+.imageLabel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    margin: 0.4rem;
+    text-align: center;
+}
