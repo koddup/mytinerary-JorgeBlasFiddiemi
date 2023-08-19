@@ -5,11 +5,11 @@ const CarouselSlide = ({ images }) => {
     return (
         <div className='flex flex-wrap'>
             {
-                images.map((eachImage, index) => {
+                images ?  images.map((eachImage, index) => {
                     return (
                         <CarouselImage ima={eachImage} key={index} />
                     )
-                })
+                }): <div>Not found</div>
             }
         </div>
     )

@@ -34,13 +34,11 @@ const Cities = () => {
 
   return (
     <div className='flex-grow'>
-      <div>
-        <div>
-          <input type="text" id="search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search..." onChange={getFilteredCities} />
-        </div>
+      <div className='w-[80vw] flex flex-col flex-wrap justify-center items-center p-2'>
+        <input type="text" id="search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search..." onChange={getFilteredCities} />
       </div>
-      <div className='w-full flex flex-row flex-wrap justify-center items-center'>
+      <div className='flex flex-row flex-wrap justify-center items-center'>
         {
           citiesFiltered.length > 0 ? citiesFiltered.map((eachCity, index) => {
             return (
@@ -55,10 +53,10 @@ const Cities = () => {
 
 export default Cities
 
-///////////////// Fin - Busqueda por frontend ///////////////// 
+///////////////// Fin - Busqueda por frontend /////////////////
 
 
-//////////////////// Busqueda por backend //////////////////// 
+//////////////////// Busqueda por backend ////////////////////
 
 /* import axios from 'axios';
 import React, { useEffect, useState } from 'react'
