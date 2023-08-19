@@ -1,0 +1,12 @@
+.eachCityImage {
+    object-Fit: cover;
+    width: 100%;
+    height: 300px;
+    transition: all 200ms;
+}
+
+.eachCityImage:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 200ms;
+}

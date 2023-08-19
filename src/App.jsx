@@ -6,6 +6,7 @@ import MainLayout from './layouts/MainLayout'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
 import Cities from './pages/Cities'
+import City from './pages/City'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -22,6 +23,10 @@ const router = createBrowserRouter([{
     {
       path: '/about/:miVariable',
       element: <About />
+    },
+    {
+      path: '/cities/:id',
+      element: <City />
     },
     {
       path: '*',

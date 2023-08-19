@@ -26,17 +26,17 @@ const Footer = () => {
             <div className='flex flex-col w-50'>
                 <Link to=''>
                     <div className='flex flex-row p-1'>
-                        <img src="src/assets/facebook.png" alt="Facebook" style={{ height: 25, filter: 'invert(1)' }}/>
+                        <img src="/src/assets/facebook.png" alt="Facebook" style={{ height: 25, filter: 'invert(1)' }}/>
                     </div>
                 </Link>
                 <Link to=''>
                     <div className='flex flex-row p-1'>
-                        <img src="src/assets/instagram.png" alt="Instagram" style={{ height: 25, filter: 'invert(1)' }}/>
+                        <img src="/src/assets/instagram.png" alt="Instagram" style={{ height: 25, filter: 'invert(1)' }}/>
                     </div>
                 </Link>
                 <Link to=''>
                     <div className='flex flex-row p-1'>
-                        <img src="src/assets/youtube.png" alt="Youtube" style={{ height: 25, filter: 'invert(1)' }}/>
+                        <img src="/src/assets/youtube.png" alt="Youtube" style={{ height: 25, filter: 'invert(1)' }}/>
                     </div>
                 </Link>
             </div>
