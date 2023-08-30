@@ -1,26 +1,22 @@
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
+import { getCity } from '../redux/actions/citiesActions';
 
 const City = () => {
-    const params = useParams()
-    const [cityData, setCityData] = useState({})
-    const navigate  = useNavigate();
+    const { id } = useParams()
+    const dispatch = useDispatch()
+    const { loading, city } = useSelector(store => store.citiesReducer)
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getCitiesData()
+        dispatch(getCity(id))
     }, [])
 
-    const getCitiesData = () => {
-        const id = params.id
-        axios.get('http://localhost:4000/api/cities/' + id).then((response) => {
-            if (response.data) {
-                setCityData(response.data.response)
-            }
-        });
+    if (loading) {
+        return <div className='flex-grow'><h1>Loading</h1></div>
     }
-
 
     return (
         <div className='flex-grow'>
@@ -34,11 +30,11 @@ const City = () => {
                     <div className='imageContainer' style={{
                         overflow: 'hidden'
                     }}>
-                        <img src={cityData.photo} title={cityData.city} alt={`${cityData.city}, ${cityData.country}`} className='eachCityImage' style={{ width: '100%' }} />
+                        <img src={city.photo} title={city.city} alt={`${city.city}, ${city.country}`} className='eachCityImage' style={{ width: '100%' }} />
                     </div>
                     <div style={{ color: 'white', backgroundColor: 'black' }}>
-                        <p className="p-2" style={{ fontWeight: 'bold' }}>{cityData.city}</p>
-                        <p className="pb-2 px-2">{cityData.country}</p>
+                        <p className="p-2" style={{ fontWeight: 'bold' }}>{city.city}</p>
+                        <p className="pb-2 px-2">{city.country}</p>
                     </div>
                 </div>
             </div>

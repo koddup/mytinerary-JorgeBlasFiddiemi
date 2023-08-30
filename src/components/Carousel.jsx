@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import Arrow from './Arrow'
 import CarouselSlide from './CarouselSlide';
-import images from '../data/cities.js'
-import axios from 'axios';
 import './Carousel.css'
-//import images from '../data/images.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { getCities } from '../redux/actions/citiesActions';
 
 const Carousel = () => {
-
-    const [cities, setCities] = useState([])
+    const [index, setIndex] = useState(0)
+    const { cities } = useSelector(store => store.citiesReducer)
+    const dispatch = useDispatch()
+    
+    useEffect(() => {
+        dispatch(getCities())
+    }, []);
+    
     const chunkSize = 4;
     let imagesPacks = []
     for (let i = 0; i < cities.length; i += chunkSize) {
         const chunk = cities.slice(i, i + chunkSize);
         imagesPacks.push(chunk)
     }
-    const [index, setIndex] = useState(0)
     const next = () => {
         if (index < imagesPacks.length - 1) {
             setIndex(index + 1)
@@ -40,21 +44,6 @@ const Carousel = () => {
         }, 4000);
         return () => clearInterval(interval);
     }, [index]);
-
-
-    useEffect(() => {
-        getCitiesData()
-    }, []);
-
-    const getCitiesData = () => {
-        axios.get('http://localhost:4000/api/cities').then((res) => {
-            console.log(res);
-            if (res.data) {
-                setCities(res.data.response);
-                console.log(cities);
-            }
-        });
-    }
 
     return (
         <div className='w-full flex justify-center items-center'>
