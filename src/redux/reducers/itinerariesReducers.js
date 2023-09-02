@@ -1,31 +1,26 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getItineraries } from "../actions/itinerariesActions";
+import { getItinerariesOfCity } from "../actions/itinerariesActions";
 
 const initialState = {
     itineraries: [],
-    loading: false
+    loadingItineraries: false
 }
 const itinerariesReducer = createReducer(initialState,
     (builder) => builder
-    .addCase(getItineraries, (state, action) => {
-        const newState = { ...state, itineraries: action.payload, loading: false }
+    .addCase(getItinerariesOfCity, (state, action) => {
+        const newState = { ...state, itineraries: action.payload, loadingItineraries: false }
         return newState
     })
-    .addCase(getItineraries.fulfilled, (state, action) => {
-        console.log("fulfilled");
+    .addCase(getItinerariesOfCity.fulfilled, (state, action) => {
         console.log(action.payload);
-        const newState = { ...state, itineraries: action.payload, loading: false }
+        const newState = { ...state, itineraries: action.payload, loadingItineraries: false }
         return newState
     })
-    .addCase(getItineraries.pending, (state, action) => {
-        console.log("pending");
-        console.log(action.payload);
-        const newState = { ...state, loading: true }
+    .addCase(getItinerariesOfCity.pending, (state, action) => {
+        const newState = { ...state, loadingItineraries: true }
         return newState
-    }).addCase(getItineraries.rejected, (state, action) => {
-        console.log("rejected");
-        console.log(action.payload);
-        const newState = { ...state, loading: false }
+    }).addCase(getItinerariesOfCity.rejected, (state, action) => {
+        const newState = { ...state, loadingItineraries: false }
         return newState
     })
     )

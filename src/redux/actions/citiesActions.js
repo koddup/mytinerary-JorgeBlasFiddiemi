@@ -13,7 +13,7 @@ const getCity = createAsyncThunk('getCity', async (id) => {
 
 const getCities = createAsyncThunk('getCities', async (searchCity) => {
     try {
-        const res = await server.get('http://localhost:4000/api/cities', {
+        const res = await server.get('/cities', {
             params: {
                 city: searchCity
             }

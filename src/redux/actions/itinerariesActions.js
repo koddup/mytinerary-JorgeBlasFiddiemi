@@ -19,4 +19,14 @@ const getItineraries = createAsyncThunk('getItineraries', async (id) => {
     }
 })
 
-export { getItineraries, getItinerary }
+const getItinerariesOfCity = createAsyncThunk('getItinerariesOfCity', async (cityID) => {
+    try {
+        const res = await server.get('/itineraries/city/' + cityID)
+        return res.data.response
+    } catch (error) {
+        console.log(error)
+        return[]
+    }
+})
+
+export { getItineraries, getItinerary, getItinerariesOfCity }

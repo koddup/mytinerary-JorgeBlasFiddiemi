@@ -3,15 +3,22 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getCity } from '../redux/actions/citiesActions';
+import { getItinerariesOfCity } from '../redux/actions/itinerariesActions';
+import ItineraryCard from '../components/ItineraryCard';
 
 const City = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
     const { loading, city } = useSelector(store => store.citiesReducer)
+    const { itineraries } = useSelector(store => store.itinerariesReducer)
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getCity(id))
+        const fetchData = async () => {
+            await dispatch(getItinerariesOfCity(id));
+            await dispatch(getCity(id));
+        };
+        fetchData();
     }, [])
 
     if (loading) {
@@ -39,7 +46,18 @@ const City = () => {
                 </div>
             </div>
             <div className='w-full flex flex-row flex-wrap justify-center items-center px-4'>
-                UNDER CONSTRUCTION
+                {
+
+                    itineraries.length > 0 ? itineraries.map((eachItinerary, index) => {
+                        return (
+                            <ItineraryCard itinerary={eachItinerary} key={index} />
+                        )
+                    }) :
+                        <div className="bg-white rounded-lg shadow-lg p-4 m-4">
+                            <p className="text-lg font-semibold">No itineraries found</p>
+                            <p className="text-gray-600">It seems there are no itineraries available right now. Please check back later for more options.</p>
+                        </div>
+                }
             </div>
         </div>
     )
