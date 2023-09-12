@@ -5,20 +5,25 @@ import './Nav.css'
 import { useSelector } from 'react-redux';
 
 const Nav = () => {
-    const { user } = useSelector(store => store.authReducer)
+    const { user, token } = useSelector(store => store.authReducer)
+    console.log(user)
     let Links = [
         { name: "HOME", link: "/" },
         { name: "CITIES", link: "/cities" },
         { name: "ABOUT", link: "/about/asd" },
         { name: "CONTACT", link: "/contact" },
-        { name: "SIGNIN", link: "/signin" },
-        { name: "SIGNUP", link: "/signup" },
     ];
+    if (Object.keys(user).length === 0){
+        Links.push({ name: "SIGNIN", link: "/signin" })
+        Links.push({ name: "SIGNUP", link: "/signup" })
+    } else {
+        Links.push({ name: "SIGNOUT", link: "/signout" })
+    }
+
     let [open, setOpen] = useState(false);
 
     return (
         <div className='w-full top-0 left-0 z-50'>
-            {user.mail ? "si" : "no"}
             <div className='md:flex items-center justify-between bg-white py-4 px-7'>
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
                     <GlobeAmericasIcon className='w-7 h-7 text-blue-600' />
@@ -39,9 +44,11 @@ const Nav = () => {
                             )
                         })
                     }
-                    <button type="button" className="md:flex md:ml-8 bg-gray-800 rounded-full md:static" id="user-menu-button">
-                        <UserCircleIcon className='w-7 h-7 text-gray-600 bg-white' />
-                    </button>
+                    {user?.photo &&
+                        <div className='ps-4'>
+                            <img src={user.photo} alt="Profile picture" className="border w-10 h-10 rounded-full" />
+                        </div>
+                    }
                 </ul>
             </div>
         </div>

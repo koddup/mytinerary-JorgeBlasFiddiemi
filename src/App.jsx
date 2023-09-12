@@ -10,7 +10,10 @@ import City from './pages/City'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import { useDispatch } from 'react-redux'
-import { authenticate } from './redux/actions/authActions'
+import { authenticate, login } from './redux/actions/authActions'
+import { useGoogleOneTapLogin } from '@react-oauth/google'
+import jwtDecode from 'jwt-decode'
+import { server } from './utils/axios'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -41,6 +44,10 @@ const router = createBrowserRouter([{
       element: <SignUp />
     },
     {
+      path: '/signout',
+      element: <SignUp />
+    },
+    {
       path: '*',
       element: <NotFound />
     }
@@ -53,6 +60,22 @@ function App() {
   useEffect(() => {
     dispatch(authenticate())
   }, [])
+
+  useGoogleOneTapLogin({
+    onSuccess: async credentialResponse =>{
+      const infoUser = jwtDecode(credentialResponse.credential)
+      const userData = {
+        mail: infoUser.email,
+        password: "AAAa1" + infoUser.email
+      }
+      const res = await server.post('/auth/in', userData)
+      dispatch(login(res.data))
+    },
+    onError: ()=> {
+      console.log("Login Error");
+    }
+  })
+  
 
   return (
     <div id='mainApp'>

@@ -19,10 +19,9 @@ const GoogleLoginButton = ({ fn }) => {
                 lastName: data.family_name,
                 mail: data.email,
                 photo: data.picture,
-                password: "AAAa1",
+                password: "AAAa1"+data.email,
                 country: "AR",
             })
-            dispatch(signup(data))
         }
 
     })

@@ -13,7 +13,6 @@ const citiesReducer = createReducer(initialState,
             return newState
         })
         .addCase(getCity.fulfilled, (state, action) => {
-            console.log(action.payload);
             const newState = { ...state, city: action.payload, loading: false }
             return newState
         })
@@ -28,7 +27,6 @@ const citiesReducer = createReducer(initialState,
 
         
         .addCase(getCities.fulfilled, (state, action) => {
-            console.log(action.payload);
             const newState = { ...state, cities: action.payload, loading: false }
             return newState
         })

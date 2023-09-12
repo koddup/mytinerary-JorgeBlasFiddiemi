@@ -18,6 +18,7 @@ const getCities = createAsyncThunk('getCities', async (searchCity) => {
                 city: searchCity
             }
         })
+        console.log(res.data.response);
         return res.data.response
     } catch (error) {
         console.log(error)

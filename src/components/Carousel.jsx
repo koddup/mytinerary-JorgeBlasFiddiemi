@@ -9,11 +9,9 @@ const Carousel = () => {
     const [index, setIndex] = useState(0)
     const { cities } = useSelector(store => store.citiesReducer)
     const dispatch = useDispatch()
-    
     useEffect(() => {
         dispatch(getCities())
-    }, []);
-    
+    }, [])
     const chunkSize = 4;
     let imagesPacks = []
     for (let i = 0; i < cities.length; i += chunkSize) {

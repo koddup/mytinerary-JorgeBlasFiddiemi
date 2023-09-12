@@ -17,24 +17,26 @@ const signup = createAction('signup', (credentials) => {
         user: credentials.userData,
         token: credentials.token
     }
-    console.log(credentials.token);
     LS.set('token', credentials.token)
     return {
         payload: reducerData
     }
 })
-const authenticate = createAsyncThunk('authenticate', async() => {
-    const token = LS.getText('token')
-    const {data} = await server.get('/auth/token', {
-        headers: {
-            Authorization: 'Bearer ' + token
+const authenticate = createAsyncThunk('authenticate', async () => {
+    try {
+        const token = LS.getText('token')
+        const { data } = await server.get('/auth/token', {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        const reducerData = {
+            user: data.userData,
         }
-    })
-    const reducerData = {
-        user: data.userData,
-        token: data.token,
+        return reducerData
+    } catch (error) {
+        console.log(error);
     }
-    return reducerData
 })
 
 export { login, signup, authenticate }

@@ -34,7 +34,7 @@ export const SignUp = () => {
             //window.location.href = "/"
         } catch (error) {
             console.log(error);
-            //notifyError(error.response.data.message)
+            notifyError(error.response.data.message)
         }
     }
 
@@ -42,6 +42,7 @@ export const SignUp = () => {
         try {
             const userData = { ...data }
             const res = await server.post('/auth/up', userData)
+            dispatch(signup(res.data))
         } catch (error) {
             notifyError(error.response.data.message)
         }
