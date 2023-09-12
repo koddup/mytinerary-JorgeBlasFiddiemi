@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import LiAndAnchor from './LiAndAnchor';
 import { GlobeAmericasIcon, Bars3BottomRightIcon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import './Nav.css'
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
+    const { user } = useSelector(store => store.authReducer)
     let Links = [
         { name: "HOME", link: "/" },
         { name: "CITIES", link: "/cities" },
         { name: "ABOUT", link: "/about/asd" },
         { name: "CONTACT", link: "/contact" },
+        { name: "SIGNIN", link: "/signin" },
+        { name: "SIGNUP", link: "/signup" },
     ];
     let [open, setOpen] = useState(false);
 
     return (
         <div className='w-full top-0 left-0 z-50'>
+            {user.mail ? "si" : "no"}
             <div className='md:flex items-center justify-between bg-white py-4 px-7'>
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
                     <GlobeAmericasIcon className='w-7 h-7 text-blue-600' />
