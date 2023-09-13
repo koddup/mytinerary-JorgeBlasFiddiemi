@@ -39,4 +39,12 @@ const authenticate = createAsyncThunk('authenticate', async () => {
     }
 })
 
-export { login, signup, authenticate }
+const logout = createAction('logout', () => {
+    LS.rm('token')
+    const reducerData = {
+        user: {},
+        token: null
+    }
+    return reducerData
+})
+export { login, signup, authenticate, logout }

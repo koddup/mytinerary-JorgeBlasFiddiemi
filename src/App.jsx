@@ -14,6 +14,7 @@ import { authenticate, login } from './redux/actions/authActions'
 import { useGoogleOneTapLogin } from '@react-oauth/google'
 import jwtDecode from 'jwt-decode'
 import { server } from './utils/axios'
+import SignOut from './components/SignOut'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -45,7 +46,7 @@ const router = createBrowserRouter([{
     },
     {
       path: '/signout',
-      element: <SignUp />
+      element: <SignOut />
     },
     {
       path: '*',

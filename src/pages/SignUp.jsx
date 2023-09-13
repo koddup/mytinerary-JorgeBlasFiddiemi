@@ -31,7 +31,7 @@ export const SignUp = () => {
             const userData = { ...data }
             const res = await server.post('/auth/up', userData)
             dispatch(signup(res.data))
-            //window.location.href = "/"
+            window.location.href = "/"
         } catch (error) {
             console.log(error);
             notifyError(error.response.data.message)
@@ -47,7 +47,7 @@ export const SignUp = () => {
             notifyError(error.response.data.message)
         }
     }
-    
+
     const notifyError = (message) => toast.error(message, {
         position: "top-center",
         autoClose: 5000,
@@ -107,9 +107,9 @@ export const SignUp = () => {
                     <div className="text-center font-bold align-middle leading-pro text-xs">
                         <span>- Or you also can  -</span>
                     </div>
-                        <GoogleLoginButton fn={handleSubmitGoogle} />
-                    <div className="flex justify-center text-center font-bold align-middle leading-pro text-xs">
-                        {/* <GoogleLogin
+                    <GoogleLoginButton fn={handleSubmitGoogle} />
+                    {/*<div className="flex justify-center text-center font-bold align-middle leading-pro text-xs">
+                         <GoogleLogin
                             onSuccess={credentialResponse => {
                                 console.log(credentialResponse);
                                 const infoUser = jwtDecode(credentialResponse.credential)
@@ -126,7 +126,11 @@ export const SignUp = () => {
                             onError={() => {
                                 console.log('Login Failed');
                             }}
-                        /> */}
+                        /> 
+                    </div>*/}
+
+                    <div className="flex justify-center items-center text-center font-bold align-middle leading-pro text-xs pt-4">
+                        <span>Already a member?</span><a href="/signin" className="flex justify-center mx-4 px-6 py-2 mt-2 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-500 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Sign In!</a>
                     </div>
                 </form>
             </div>

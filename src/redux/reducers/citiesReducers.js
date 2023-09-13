@@ -30,14 +30,6 @@ const citiesReducer = createReducer(initialState,
             const newState = { ...state, cities: action.payload, loading: false }
             return newState
         })
-        .addCase(getCities.pending, (state, action) => {
-            const newState = { ...state, loading: true }
-            return newState
-        })
-        .addCase(getCities.rejected, (state, action) => {
-            const newState = { ...state, loading: false }
-            return newState
-        })
         
 
         .addDefaultCase(() => {

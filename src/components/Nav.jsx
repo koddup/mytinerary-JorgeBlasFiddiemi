@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import LiAndAnchor from './LiAndAnchor';
-import { GlobeAmericasIcon, Bars3BottomRightIcon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { GlobeAmericasIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import './Nav.css'
 import { useSelector } from 'react-redux';
 
 const Nav = () => {
-    const { user, token } = useSelector(store => store.authReducer)
-    console.log(user)
+    const { user } = useSelector(store => store.authReducer)
     let Links = [
         { name: "HOME", link: "/" },
         { name: "CITIES", link: "/cities" },
         { name: "ABOUT", link: "/about/asd" },
         { name: "CONTACT", link: "/contact" },
     ];
-    if (Object.keys(user).length === 0){
-        Links.push({ name: "SIGNIN", link: "/signin" })
-        Links.push({ name: "SIGNUP", link: "/signup" })
+    if (Object.keys(user).length === 0) {
+        Links.push({ name: "SIGN IN", link: "/signin" })
+        Links.push({ name: "SIGN UP", link: "/signup" })
     } else {
-        Links.push({ name: "SIGNOUT", link: "/signout" })
+        Links.push({ name: "SIGN OUT", link: "/signout" })
     }
 
     let [open, setOpen] = useState(false);

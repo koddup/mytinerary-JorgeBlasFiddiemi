@@ -2,22 +2,40 @@ import React, { useState, useEffect } from 'react'
 import Arrow from './Arrow'
 import CarouselSlide from './CarouselSlide';
 import './Carousel.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { getCities } from '../redux/actions/citiesActions';
+import { server } from '../utils/axios';
 
 const Carousel = () => {
     const [index, setIndex] = useState(0)
-    const { cities } = useSelector(store => store.citiesReducer)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getCities())
-    }, [])
-    const chunkSize = 4;
-    let imagesPacks = []
-    for (let i = 0; i < cities.length; i += chunkSize) {
-        const chunk = cities.slice(i, i + chunkSize);
-        imagesPacks.push(chunk)
+    const [cities, setCities] = useState([])
+    const [imagesPacks, setImagesPacks] = useState([])
+    const getCities = async (searchCity) => {
+        try {
+            const res = await server.get('/cities', {
+                params: {
+                    city: searchCity
+                }
+            })
+            setCities(res.data.response)
+        } catch (error) {
+            console.log(error)
+            setCities([])
+        }
     }
+    useEffect(() => {
+        getCities()
+    }, [])
+
+    useEffect(() => {
+        const chunkSize = 4;
+        const updatedImagesPacks = [];
+        for (let i = 0; i < cities.length; i += chunkSize) {
+            const chunk = cities.slice(i, i + chunkSize);
+            updatedImagesPacks.push(chunk);
+        }
+        setImagesPacks(updatedImagesPacks)
+        setIndex(0)
+    }, [cities]);
+
     const next = () => {
         if (index < imagesPacks.length - 1) {
             setIndex(index + 1)
@@ -35,7 +53,6 @@ const Carousel = () => {
     const setBullet = (indice) => {
         setIndex(indice)
     }
-
     useEffect(() => {
         const interval = setInterval(() => {
             next()
